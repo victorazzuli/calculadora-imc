@@ -1,61 +1,112 @@
 # 🏃 Calculadora de IMC
 
-Calculadora de **Índice de Massa Corporal (IMC)** em Python, seguindo os critérios da Organização Mundial da Saúde (OMS).
+> Calculadora de **Índice de Massa Corporal (IMC)** em Python, com classificação baseada nos critérios da Organização Mundial da Saúde (OMS).
+
+---
+
+## 📌 Sobre o projeto
+
+Este projeto foi desenvolvido em Python puro e permite calcular o IMC de forma simples pelo terminal. Suporta tanto o sistema **métrico** (kg/cm) quanto o **imperial** (lb/in) e classifica o resultado em 8 categorias conforme a OMS.
+
+---
 
 ## ✨ Funcionalidades
 
-- Cálculo de IMC com unidades **métricas** (kg / cm) e **imperiais** (lb / in)
-- Classificação em **8 categorias** conforme a OMS
-- Conversão automática de unidades
-- Interface de linha de comando interativa
-- Funções reutilizáveis como módulo Python
-- Testes unitários com `pytest`
+- ⚖️ Cálculo de IMC com unidades **métricas** e **imperiais**
+- 🏷️ Classificação em **8 categorias** conforme a OMS
+- 🔄 Conversão automática de unidades
+- 💻 Interface de linha de comando interativa
+- 🧩 Funções reutilizáveis como módulo Python
+- 🧪 Testes unitários com `pytest`
+
+---
 
 ## 📊 Tabela de Classificação (OMS)
 
 | IMC           | Classificação        |
-|---------------|----------------------|
-| < 16.0        | Magreza Grave        |
-| 16.0 – 17.0   | Magreza Moderada     |
-| 17.0 – 18.5   | Magreza Leve         |
-| 18.5 – 25.0   | Peso Normal ✅        |
-| 25.0 – 30.0   | Sobrepeso            |
-| 30.0 – 35.0   | Obesidade Grau I     |
-| 35.0 – 40.0   | Obesidade Grau II    |
-| ≥ 40.0        | Obesidade Grau III   |
+|:-------------:|----------------------|
+| < 16.0        | 🔵 Magreza Grave        |
+| 16.0 – 17.0   | 🟢 Magreza Moderada     |
+| 17.0 – 18.5   | 🟡 Magreza Leve         |
+| 18.5 – 25.0   | ✅ Peso Normal           |
+| 25.0 – 30.0   | 🟠 Sobrepeso            |
+| 30.0 – 35.0   | 🔴 Obesidade Grau I     |
+| 35.0 – 40.0   | 🔴 Obesidade Grau II    |
+| ≥ 40.0        | 🔴 Obesidade Grau III   |
+
+---
 
 ## 🚀 Como usar
 
-### Requisitos
+### Pré-requisitos
 
-- Python 3.10+
+- Python **3.10** ou superior
 
-### Executar a calculadora interativa
-
+Verifique sua versão com:
 ```bash
-python imc.py
+python --version
 ```
 
-### Usar como módulo no seu código
+### Clonar o repositório
+
+```bash
+git clone https://github.com/victorazzuli/calculadora-imc.git
+cd calculadora-imc
+```
+
+### Executar a calculadora
+
+```bash
+python calculadora_imc.py
+```
+
+### Exemplo de uso no terminal
+
+```
+=============================================
+     🏃 CALCULADORA DE IMC  (OMS)
+=============================================
+
+  Escolha o sistema de unidades:
+  [1] Métrico  (kg / cm)
+  [2] Imperial (lb / in)
+
+  Opção: 1
+
+  Peso (kg): 70
+  Altura (cm): 175
+
+=============================================
+  ✅  RESULTADO DO IMC
+=============================================
+  IMC calculado  : 22.86
+  Classificação  : Peso Normal
+  Descrição      : Peso saudável
+=============================================
+```
+
+### Usar como módulo
 
 ```python
-from imc import calcular_imc, classificar_imc
+from calculadora_imc import calcular_imc, classificar_imc
 
 imc = calcular_imc(peso=70, altura=1.75)
 classificacao = classificar_imc(imc)
 
-print(f"IMC: {imc}")                        # IMC: 22.86
-print(f"Categoria: {classificacao['categoria']}")  # Categoria: Peso Normal
+print(f"IMC: {imc}")                              # IMC: 22.86
+print(f"Categoria: {classificacao['categoria']}") # Categoria: Peso Normal
 ```
 
-### Conversão de unidades imperiais
+### Conversão imperial → métrico
 
 ```python
-from imc import converter_imperial_para_metrico, calcular_imc
+from calculadora_imc import converter_imperial_para_metrico, calcular_imc
 
 peso_kg, altura_m = converter_imperial_para_metrico(peso_lb=154, altura_in=67)
 imc = calcular_imc(peso_kg, altura_m)
 ```
+
+---
 
 ## 🧪 Testes
 
@@ -67,16 +118,34 @@ pip install pytest
 python -m pytest tests/ -v
 ```
 
+---
+
 ## 📁 Estrutura do projeto
 
 ```
-imc_calculator/
-├── imc.py              # Lógica principal + CLI
+calculadora-imc/
+├── calculadora_imc.py   # Lógica principal + CLI interativa
 ├── tests/
-│   └── test_imc.py     # Testes unitários
+│   └── test_imc.py      # Testes unitários (14 casos)
 └── README.md
 ```
 
+---
+
+## 🛠️ Tecnologias
+
+- [Python 3.10+](https://www.python.org/)
+- [pytest](https://pytest.org/) — testes unitários
+
+---
+
+## 👤 Autor
+
+**Victor Azzuli**
+- GitHub: [@victorazzuli](https://github.com/victorazzuli)
+
+---
+
 ## 📄 Licença
 
-MIT License — fique à vontade para usar e modificar.
+Este projeto está sob a licença **MIT** — fique à vontade para usar, modificar e distribuir.
