@@ -1,0 +1,82 @@
+# 🏃 Calculadora de IMC
+
+Calculadora de **Índice de Massa Corporal (IMC)** em Python, seguindo os critérios da Organização Mundial da Saúde (OMS).
+
+## ✨ Funcionalidades
+
+- Cálculo de IMC com unidades **métricas** (kg / cm) e **imperiais** (lb / in)
+- Classificação em **8 categorias** conforme a OMS
+- Conversão automática de unidades
+- Interface de linha de comando interativa
+- Funções reutilizáveis como módulo Python
+- Testes unitários com `pytest`
+
+## 📊 Tabela de Classificação (OMS)
+
+| IMC           | Classificação        |
+|---------------|----------------------|
+| < 16.0        | Magreza Grave        |
+| 16.0 – 17.0   | Magreza Moderada     |
+| 17.0 – 18.5   | Magreza Leve         |
+| 18.5 – 25.0   | Peso Normal ✅        |
+| 25.0 – 30.0   | Sobrepeso            |
+| 30.0 – 35.0   | Obesidade Grau I     |
+| 35.0 – 40.0   | Obesidade Grau II    |
+| ≥ 40.0        | Obesidade Grau III   |
+
+## 🚀 Como usar
+
+### Requisitos
+
+- Python 3.10+
+
+### Executar a calculadora interativa
+
+```bash
+python imc.py
+```
+
+### Usar como módulo no seu código
+
+```python
+from imc import calcular_imc, classificar_imc
+
+imc = calcular_imc(peso=70, altura=1.75)
+classificacao = classificar_imc(imc)
+
+print(f"IMC: {imc}")                        # IMC: 22.86
+print(f"Categoria: {classificacao['categoria']}")  # Categoria: Peso Normal
+```
+
+### Conversão de unidades imperiais
+
+```python
+from imc import converter_imperial_para_metrico, calcular_imc
+
+peso_kg, altura_m = converter_imperial_para_metrico(peso_lb=154, altura_in=67)
+imc = calcular_imc(peso_kg, altura_m)
+```
+
+## 🧪 Testes
+
+```bash
+# Instalar pytest
+pip install pytest
+
+# Executar os testes
+python -m pytest tests/ -v
+```
+
+## 📁 Estrutura do projeto
+
+```
+imc_calculator/
+├── imc.py              # Lógica principal + CLI
+├── tests/
+│   └── test_imc.py     # Testes unitários
+└── README.md
+```
+
+## 📄 Licença
+
+MIT License — fique à vontade para usar e modificar.
